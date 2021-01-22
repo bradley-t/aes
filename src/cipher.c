@@ -4,8 +4,35 @@
 
 uint8_t state[STATE_ROWS][STATE_COLS];
 
+void subBytes();
+void shiftRows();
+void mixColumns();
+void addRoundKey(uint32_t roundKey[]);
+
+void setState(uint8_t * stateArray);
+void copyState(uint8_t * dstState, uint8_t * srcState);
 void setCol(uint8_t col, uint32_t value);
 uint32_t getCol(uint8_t col);
+
+void cipher(uint8_t * in, uint8_t * out, uint32_t expandedCipherKey[], uint8_t Nr){
+  
+  setState(in);
+
+  addRoundKey(&expandedCipherKey[0]);
+
+  for ( uint8_t round = 1; round < Nr; round++) {
+    subBytes();
+    shiftRows();
+    mixColumns();
+    addRoundKey(&expandedCipherKey[4 * round]);
+  }
+
+  subBytes();
+  shiftRows();
+  addRoundKey(&expandedCipherKey[4 * Nr]);
+
+  copyState(&state[0][0], out);
+}
 
 void subBytes() {
   for ( uint8_t col = 0; col < STATE_COLS; col++ ) {
@@ -40,9 +67,9 @@ void mixColumns(){
   }
 }
 
-void addRoundKey(uint32_t roundKey[]){
+void addRoundKey(uint32_t * roundKey){
   for ( uint8_t col = 0; col < STATE_COLS; col++ ) {
-    uint32_t value = getCol(col) ^ roundKey[col];
+    uint32_t value = getCol(col) ^ *(roundKey + col);
     setCol(col, value);
   }
 }
@@ -58,10 +85,13 @@ void setCol(uint8_t col, uint32_t value){
   state[3][col] = ( value & LS_BYTE );
 }
 
-void setState(uint8_t * stateArray) {
+void copyState( uint8_t * srcState, uint8_t * dstState ) {
  for ( uint8_t col = 0; col < STATE_COLS; col++ ) {
     for ( uint8_t row = 0; row < STATE_ROWS; row++ ) {
-      state[col][row] = *(stateArray + (4 * col) + row);
+      *(dstState + (4 * col) + row) = *(srcState + (4 * col) + row);
     }
   }
+}
+void setState(uint8_t * stateArray) {
+  copyState(stateArray, &state[0][0]);
 }
