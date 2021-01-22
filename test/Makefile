@@ -8,7 +8,10 @@ clean:
 test: ffArithmetic_Test.c keyExpansion_Test.c
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)test_ffArithmetic ffArithmetic_Test.c
 	$(BUILD_DIR)test_ffArithmetic
+
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)test_keyExpansion keyExpansion_Test.c
 	$(BUILD_DIR)test_keyExpansion
 
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)test_cipher cipher_Test.c
+	$(BUILD_DIR)test_cipher
 	
