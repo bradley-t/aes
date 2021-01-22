@@ -1,5 +1,4 @@
-#include <stdint.h>
-#include <stdbool.h>
+#include "ffArithmetic.h"
 
 uint8_t ffAdd( uint8_t a, uint8_t b ) {
   return a ^ b;

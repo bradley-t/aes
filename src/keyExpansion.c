@@ -1,6 +1,4 @@
-#include <stdint.h>
-#include <stdio.h>
-#include "constants.c"
+#include "keyExpansion.h"
 
 uint32_t subWord(uint32_t word){
   uint32_t result = 0;

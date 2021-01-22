@@ -1,5 +1,5 @@
 
-#include "../src/ffArithmetic.c"
+#include "../src/ffArithmetic.h"
 #include <stdio.h>
 
 int test_ffAdd();

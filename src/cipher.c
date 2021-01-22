@@ -1,18 +1,6 @@
-#include<stdint.h>
-#include "constants.c"
-#include "ffArithmetic.c"
+#include "cipher.h"
 
 uint8_t state[STATE_ROWS][STATE_COLS];
-
-void subBytes();
-void shiftRows();
-void mixColumns();
-void addRoundKey(uint32_t roundKey[]);
-
-void setState(uint8_t * stateArray);
-void copyState(uint8_t * dstState, uint8_t * srcState);
-void setCol(uint8_t col, uint32_t value);
-uint32_t getCol(uint8_t col);
 
 void cipher(uint8_t * in, uint8_t * out, uint32_t expandedCipherKey[], uint8_t Nr){
   

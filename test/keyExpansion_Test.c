@@ -1,4 +1,4 @@
-#include "../src/keyExpansion.c"
+#include "../src/keyExpansion.h"
 #include <stdio.h>
 
 int test_applySbox();
