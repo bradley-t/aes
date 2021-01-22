@@ -8,7 +8,7 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/test_keyExpansion",
+      "program": "${workspaceFolder}/build/test_cipher",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
