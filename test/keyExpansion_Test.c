@@ -93,7 +93,7 @@ int test_keyExpansion() {
   printf("-- Testing test_keyExpansion ... ");
   uint8_t expanded_key_size = (NB * ( NR_128 + 1 ));
   uint32_t expandedKey[expanded_key_size];
-  keyExpansion(key, expandedKey, NK_128, expanded_key_size);
+  keyExpansion(&key[0], expandedKey, NK_128, expanded_key_size);
 
   for (int i = 0; i < expanded_key_size; i++){
     if (expandedKey[i] != expanded[i]){
