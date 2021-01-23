@@ -2,18 +2,21 @@
 Bradley Taylor
 
 ### Compiling and Running
-Running this implementation is really quite simple. It will however require gcc compiler to be already installed on your machine. The commands for running it are:
+Running this implementation is really quite simple. It will however require gcc compiler to be already installed on your machine. First navigate to the project directory (AES). The commands for compiling and running it are:
 ```
-cd src
 make
-make run
+./aes key_size cipher_key_file input_file [-d | --decrypt]
+
 ```
+The allowed aes key sizes are 128, 192 and 256. The program reads both the cipher key and the input block from the files provided. if the -d option (must come at the end) is specified then it will operate in decrypt mode. The aes program writes the result to stdout, which can then be redirected to a file if desired.
+
+Note: I used the plaintext files cipher.key, plaintext.block and ciphertext.block when using the program. You may look at them or use them as examples. They currently contain the key, plaintext and ciphertext from the first example in appendix C of the FIPS paper.
 
 ### Rescources Used
-In order to implement this project the only AES rescources that I used were the ones provided in the project spec.
+In implementing this project, the only AES rescources I used were the ones provided in the project spec.
 
 ### Test Cases
-I am happy to say that my code passes all of the tests listed on the website. You are welcome to run or examine my unit tests found in the test directory. The commands for running the unit tests are:
+I am happy to say that my code passes all of the tests listed on the website and appendix C of the FIPS paper. You are welcome to run or examine my unit tests found in the test directory. The commands for compiling and running the unit tests are:
 ```
 cd test
 make test
