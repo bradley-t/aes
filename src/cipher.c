@@ -56,9 +56,11 @@ void mixColumns(){
 }
 
 void addRoundKey(uint32_t * roundKey){
+  // uint32_t * state_p = (uint32_t *)&state[0][0];
   for ( uint8_t col = 0; col < STATE_COLS; col++ ) {
     uint32_t value = getCol(col) ^ *(roundKey + col);
     setCol(col, value);
+    // *(state_p + col) = *(state_p + col) ^ *(roundKey + col);
   }
 }
 

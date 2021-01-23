@@ -7,9 +7,9 @@
 #include "cipher.h"
 #include "invCipher.h"
 
-void encrypt (uint32_t * plaintext, uint32_t * cipherKey,
-              uint32_t keySize, uint32_t * ciphertext);
+void encrypt (uint8_t * plaintext, uint8_t * cipherKey,
+              uint32_t keySize, uint8_t * ciphertext);
               
-void decrypt (uint32_t * ciphertext, uint32_t * cipherKey,
-              uint32_t keySize, uint32_t * plaintext);
+void decrypt (uint8_t * ciphertext, uint8_t * cipherKey,
+              uint32_t keySize, uint8_t * plaintext);
 #endif
