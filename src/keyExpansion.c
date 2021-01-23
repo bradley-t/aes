@@ -13,11 +13,11 @@ uint32_t rotWord(uint32_t word){
   return ( ( word << 8 ) | word >> 24 );
 }
 
-void keyExpansion(uint8_t key[], uint32_t w[], uint8_t Nk, uint8_t w_size){
+void keyExpansion(uint8_t * key, uint32_t w[], uint8_t Nk, uint8_t w_size){
   uint32_t temp;
 
   for ( uint8_t i = 0; i < Nk; i++ ) {
-    w[i] = ((key[4 * i] << 24) | (key[4 * i + 1] << 16) | (key[4 * i + 2] << 8) | key[4 * i + 3]);
+    w[i] = ((*(key + 4 * i) << 24) | (*(key + (4 * i + 1)) << 16) | (*(key + (4 * i + 2)) << 8) | *(key + (4 * i + 3)));
   }
 
   for ( uint8_t i = Nk; i < w_size; i++ ) {
