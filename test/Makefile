@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -g -Wall
 BUILD_DIR = ../build/
 SOURCE_DIR = ../src/
-SOURCE_FILES = ../src/*.c
+SOURCE_FILES = ../src/[^m]*.c
 RESOURCE = ../src/constants.c
 
 all: ffArithmetic_Test.c keyExpansion_Test.c cipher_Test.c invCipher_Test.c $(SOURCE_FILES)
